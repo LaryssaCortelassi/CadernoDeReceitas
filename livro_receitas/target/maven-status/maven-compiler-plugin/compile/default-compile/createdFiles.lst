@@ -1,0 +1,11 @@
+util\DataBase.class
+DAO\IgredientesDAO.class
+models\ModoPreparo.class
+models\Igredientes.class
+service\IgredientesService.class
+DAO\LivroReceitasDAO.class
+main\Main.class
+models\Categoria.class
+models\LivroReceitas.class
+models\Receitas.class
+service\LivroReceitasService.class
