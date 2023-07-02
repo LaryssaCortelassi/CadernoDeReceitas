@@ -1,0 +1,56 @@
+/* Lógico_1: */
+
+CREATE TABLE livro_receitas (
+    id INTEGER PRIMARY KEY UNIQUE,
+    nome VARCHAR
+);
+
+CREATE TABLE receitas (
+    id INTEGER PRIMARY KEY UNIQUE,
+    nome VARCHAR,
+    rendimento VARCHAR,
+    tempo_preparo TIME,
+    fk_categoria_id INTEGER
+);
+
+CREATE TABLE igredientes (
+    id INTEGER PRIMARY KEY UNIQUE,
+    nome VARCHAR,
+    quantidade VARCHAR,
+    unidade_medida VARCHAR,
+    fk_receitas_id INTEGER,
+    fk_modo_preparo_id INTEGER
+);
+
+CREATE TABLE modo_preparo (
+    id INTEGER PRIMARY KEY UNIQUE,
+    ordem VARCHAR,
+    descricao INTEGER
+);
+
+CREATE TABLE categoria (
+    id INTEGER PRIMARY KEY UNIQUE,
+    doce VARCHAR,
+    salgado VARCHAR,
+    fk_livro_receitas_id INTEGER
+);
+ 
+ALTER TABLE receitas ADD CONSTRAINT FK_receitas_2
+    FOREIGN KEY (fk_categoria_id)
+    REFERENCES categoria (id)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE igredientes ADD CONSTRAINT FK_igredientes_2
+    FOREIGN KEY (fk_receitas_id)
+    REFERENCES receitas (id)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE igredientes ADD CONSTRAINT FK_igredientes_3
+    FOREIGN KEY (fk_modo_preparo_id)
+    REFERENCES modo_preparo (id)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE categoria ADD CONSTRAINT FK_categoria_2
+    FOREIGN KEY (fk_livro_receitas_id)
+    REFERENCES livro_receitas (id)
+    ON DELETE RESTRICT;
